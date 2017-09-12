@@ -2,79 +2,63 @@ FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
 # supermodel-api
+Supermodel is a developer tool for semantic modelling of cloud infrastructure through source code.
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+## Supermodel Collection [/supermodel]
 
-## Questions Collection [/questions]
-
-### List All Questions [GET]
+### List All Methods [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
+                "supermodel": "List methods you can use with a model.",
                 "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "methods": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
+                        "method": "checkout",
+                        "description": 2048
                     }, {
-                        "choice": "Python",
-                        "votes": 1024
+                        "method": "create",
+                        "description": 1024
                     }, {
-                        "choice": "Objective-C",
-                        "votes": 512
+                        "method": "delete",
+                        "description": 512
                     }, {
-                        "choice": "Ruby",
-                        "votes": 256
+                        "method": "merge",
+                        "description": 256
                     }
                 ]
             }
         ]
 
-### Create a New Question [POST]
+### Operations for handling a source code model [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+There are a variety of operations you can perform with a supermodel.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "checkout": "checkout the same branch for every repo in the model.",
+            "branch_name": "branch name",
+            "model_name": "model name"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /supermodel/2
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "model_name": "model name",
+                "branch_name": "branch name",
+                "git_response": [
                     {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
+                        "repo_name": "repo name",
+                        "git_checkout": "checkout response"
                     }
                 ]
             }
