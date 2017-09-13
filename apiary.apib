@@ -1,38 +1,56 @@
 FORMAT: 1A
 HOST: http://supermodelapi.apiblueprint.org/
 
-# supermodel-api
-Supermodel is a developer tool for semantic modelling of cloud infrastructure through source code.
+# Supermodel API
+Supermodel is a developer tool for semantic modeling of cloud infrastructure through source code.
 
-## Supermodel Collection [/supermodel]
+## Supermodel API Root []
 
-### List All Methods [GET]
+### Retrieve the Entry Point [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "supermodel": "List methods you can use with a model.",
+                "supermodel": "List of methods you can use with a model.",
                 "published_at": "2015-08-05T08:40:51.620Z",
                 "methods": [
                     {
                         "method": "checkout",
-                        "description": 2048
+                        "description": "Check out a branch with the same name on all of the model repositories."
                     }, {
                         "method": "create",
-                        "description": 1024
+                        "description": "Create a source code model based on the supermodel file."
                     }, {
                         "method": "delete",
-                        "description": 512
+                        "description": "Delete a source code model locally."
                     }, {
                         "method": "merge",
-                        "description": 256
+                        "description": "Git merge a branch on all repos to another branch on all repos."
+                    }, {
+                        "method": "pull",
+                        "description": "Git pull all the repos in the model."
+                    }, {
+                        "method": "push",
+                        "description": "Git push all repos to their remote branches."
+                    }, {
+                        "method": "show",
+                        "description": "Show the supermodel on the command line."
+                    }, {
+                        "method": "status",
+                        "description": "Git status for all the repos in the model."
+                    }, {
+                        "method": "sync",
+                        "description": "Get a new version of the supermodel file from the remote."
+                    }, {
+                        "method": "update",
+                        "description": "Update the local model with changes to the supermodel."
                     }
                 ]
             }
         ]
 
-### Operations for handling a source code model [POST]
+### Model Operations [POST]
 
 There are a variety of operations you can perform with a supermodel.
 
